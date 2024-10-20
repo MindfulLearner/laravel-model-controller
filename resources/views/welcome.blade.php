@@ -17,7 +17,42 @@
     </head>
     <body class="antialiased">
 
-      @include('ciao')
+    @include('ciao')
+
+    @foreach ($Movies as $movie)
+        <div>{{ $movie }}</div>
+    @endforeach
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+        @foreach ($Movies as $movie)
+            <div class="bg-gray-100 p-4 rounded-lg shadow-lg">
+                <p class="font-semibold">ID: <span class="text-gray-900">{{ $movie->id }}</span></p>
+                <p class="font-semibold">Title: <span class="text-gray-900">{{ $movie->title }}</span></p>
+                <p class="font-semibold">Original Title: <span class="text-gray-900">{{ $movie->original_title }}</span></p>
+                <p class="font-semibold">Nationality: <span class="text-gray-900">{{ $movie->nationality }}</span></p>
+            </div>
+        @endforeach
+    </div>
+
+
+    {{-- <div class="grid grid-cols-4 gap-4">
+        @foreach ($Movies as $movie)
+            <div class="p-6 border bg-black rounded-lg">
+                <p><strong>ID:</strong> {{ $movie->id }}</p>
+                <p><strong>Title:</strong> {{ $movie->title }}</p>
+                <p><strong>Original Title:</strong> {{ $movie->original_title }}</p>
+                <p><strong>Nationality:</strong> {{ $movie->nationality }}</p>
+            </div>
+        @endforeach
+    </div>
+ --}}
+
+    {{-- stampa key
+    @foreach ($Movies as $movie)
+        @foreach (array_keys($movie->toArray()) as $key)
+            <div>{{ $key }}</div>
+        @endforeach
+    @endforeach --}}
 
     </body>
 </html>

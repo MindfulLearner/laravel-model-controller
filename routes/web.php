@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Guest\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/', [PageController::class, 'index']);
+
+Route::get('/ciao', function () {
+    return view('homepage');
 });
 
+// controlling if laravel has problem with db..
 Route::get('/health', function () {
     return response()->json(['status' => 'healthy'], 200);
 });
